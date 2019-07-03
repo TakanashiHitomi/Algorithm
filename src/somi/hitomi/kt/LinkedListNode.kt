@@ -1,5 +1,7 @@
 package somi.hitomi.kt
 
+import kotlin.math.abs
+
 /**
  *
  * <p/>
@@ -10,46 +12,61 @@ package somi.hitomi.kt
 /**
  * 单向链表
  */
-open class LinkedList(
+open class LinkedListNode(
     /**
      * 后继节点
      */
-    var nextNode: LinkedList? = null,
+    var nextNode: LinkedListNode? = null,
     /**
      * 值
      */
     var value: String = ""
-)
+) {
+    override fun toString(): String {
+        return "LinkedListNode ${hashCode()} with value = $value"
+    }
+}
 
-class DoubleLinkedList(
+class DoubleLinkedListNode(
     /**
      * 后继节点
      */
-    nextNode: DoubleLinkedList? = null,
+    nextNode: DoubleLinkedListNode? = null,
     /**
      * 值
      */
     value: String = "",
-    var prevNode: DoubleLinkedList? = null
-) : LinkedList(nextNode, value) {
-
+    /**
+     * 前驱节点
+     */
+    var prevNode: DoubleLinkedListNode? = null
+) : LinkedListNode(nextNode, value) {
+    override fun toString(): String {
+        return "DoublyLinkedListNode ${hashCode()} with value = $value"
+    }
 }
 
 /**
  * 测试 单向链表
  */
-fun testLinkedTable() {
+fun testLinkedList() {
+    val list: Array<LinkedListNode>
+    var nextNode: LinkedListNode
+    for (i in 0..10) {
+        nextNode = LinkedListNode(value = i.toString())
 
+    }
 }
 
 /**
- * 测试双向链表
+ * 测试 双向链表
  */
 fun testDoublyLinkedList() {
 
 }
 
 fun main() {
-    testLinkedTable()
+    testLinkedList()
     testDoublyLinkedList()
+
 }
